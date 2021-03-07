@@ -10,6 +10,54 @@ $(document).ready(function(){
 
     let poke_nombre;
 
+    //Grafico por defecto.
+
+    
+    var radarData = {
+      labels: ["HP", "Ataque", "Defensa", "Ataque Especial", "Defensa Especial", "Velocidad"],
+      datasets: [
+          {
+              label: "",
+              fillColor: "#FF00BF",
+              strokeColor: "#FF00BF",
+              pointColor: "#FF00BF",
+              pointStrokeColor: "#FF00BF",
+              pointHighlightFill: "#E9CAD0",
+              pointHighlightStroke: "#E9CAD0",
+              data: [0,0,0,0,0,0]
+          },
+      ]
+  };
+
+    var radarOptions = {
+        scaleShowLine : false,
+        angleShowLineOut : true,
+        scaleShowLabels : false,
+        scaleBeginAtZero : true,
+        angleLineColor : "#E9CAD0",
+        angleLineWidth : 1,
+        pointLabelFontFamily : "'Arial'",
+        pointLabelFontStyle : "normal",
+        pointLabelFontSize : 10,
+        pointLabelFontColor : "#E9CAD0",
+        pointDot : false,
+        pointDotRadius : 2,
+        pointDotStrokeWidth : 1,
+        pointHitDetectionRadius : 20,
+        datasetStroke : true,
+        datasetStrokeWidth : 1,
+        datasetFill : false,
+    };
+
+  var ctx = document.getElementById("radarChart").getContext("2d");
+
+  var myRadarChart = new Chart(ctx, {
+    type: 'radar',
+    data: radarData,
+    options: radarOptions
+  });
+
+
   $.ajax({
     url: url_api_pokemon,
     type: 'GET',
@@ -57,65 +105,48 @@ $(document).ready(function(){
 
 
         //Caracteristicas.
-        const tipo = data.types;
-        console.log(JSON.stringify(tipo));
+        
+        //Tipo
+        let tipo = data.types[0].type.name;
+        //tipo += " - " + data.types[1].type.name;
+
+        $("#tipo").text(tipo);
+
+
+        //Habilidades.
+        let habilidades = data.abilities[0].ability.name;
+        //habilidades += " - " + data.abilities[1].ability.name;
+
+        $("#habilidades").text(habilidades);
+
 
         const pokemonAltura = data.height;
         $("#altura").text(pokemonAltura);
 
         const pokemonPeso = data.weight;
         $("#peso").text(pokemonPeso);
+
+
+
+        //Grafico
+        let estadisticas = [];
+
+        estadisticas.push(parseInt(data.stats[0].base_stat)); 
+        estadisticas.push(parseInt(data.stats[1].base_stat)); 
+        estadisticas.push(parseInt(data.stats[2].base_stat)); 
+        estadisticas.push(parseInt(data.stats[3].base_stat)); 
+        estadisticas.push(parseInt(data.stats[4].base_stat)); 
+        estadisticas.push(parseInt(data.stats[5].base_stat)); 
+
+        console.log(estadisticas);
+
+        myRadarChart.data.datasets[0].data =  estadisticas;
+        myRadarChart.update();
+
       }
     });
   });
 
-
-
-    var radarData = {
-      labels: ["HP", "Ataque", "Defensa", "Ataque Especial", "Defensa Especial", "Velocidad", "Running"],
-      datasets: [
-          {
-              label: "My First dataset",
-              fillColor: "rgba(98,203,49,0.2)",
-              strokeColor: "rgba(98,203,49,1)",
-              pointColor: "rgba(98,203,49,1)",
-              pointStrokeColor: "#fff",
-              pointHighlightFill: "#fff",
-              pointHighlightStroke: "#62cb31",
-              data: [65, 59, 66, 45, 56, 55, 40]
-          },
-      ]
-  };
-
-    var radarOptions = {
-        scaleShowLine : true,
-        angleShowLineOut : true,
-        scaleShowLabels : false,
-        scaleBeginAtZero : true,
-        angleLineColor : "rgba(0,0,0,.1)",
-        angleLineWidth : 1,
-        pointLabelFontFamily : "'Arial'",
-        pointLabelFontStyle : "normal",
-        pointLabelFontSize : 10,
-        pointLabelFontColor : "#666",
-        pointDot : true,
-        pointDotRadius : 2,
-        pointDotStrokeWidth : 1,
-        pointHitDetectionRadius : 20,
-        datasetStroke : true,
-        datasetStrokeWidth : 1,
-        datasetFill : true,
-    };
-
-  var ctx = document.getElementById("radarChart").getContext("2d");
- 
-  //var myNewChart = new Chart(ctx).Radar(radarData, radarOptions);
-
-  var myRadarChart = new Chart(ctx, {
-    type: 'radar',
-    data: radarData,
-    options: radarOptions
-});
 
 
 });
