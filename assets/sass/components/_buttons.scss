@@ -1,0 +1,7 @@
+.button {
+    border-radius: 20px;
+    &:hover {
+        background-color: $light-gray;
+        border-color: $light-gray;
+    }
+}

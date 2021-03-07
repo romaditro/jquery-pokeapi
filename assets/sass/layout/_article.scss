@@ -1,0 +1,64 @@
+.article {
+    color: $nickel;
+    &__fecha {
+        font-family: $playfair;
+        line-height: 6rem;
+    }
+    &__lorem {
+        line-height: 3rem;
+    }
+}
+
+.article-footer {
+    border-top: solid 2px $platinum;
+    &__image {
+        border-radius: 50%;
+        @media (max-width: 767.98px) {
+            width: 180px;
+            margin-bottom: 2rem;
+        }
+    }
+    &__info {
+        margin-bottom: 0;
+        &-pink {
+            color: $spanish-pink;
+        }
+        &-link {
+            text-decoration: none;
+            color: inherit;
+        }
+        &-link:hover {
+            text-decoration: none;
+            color: $eerie-black;
+        }
+        &-link:active {
+            text-decoration: none;
+            color: $platinum;
+        }
+    }
+    &__lorem-naomi {
+        line-height: 2rem;
+        color: $nickel;
+        font-size: $small;
+    }
+    @media (max-width: 767.98px) {
+        text-align: center;
+    }
+}
+
+.buttons {
+    @media (max-width: 767.98px) {
+        text-align: center;
+    }
+}
+
+.button {
+    margin-right: .5rem;
+}
+
+.pagination {
+    margin-bottom: 0;
+    &-color {
+        background-color: $platinum;
+    }
+}

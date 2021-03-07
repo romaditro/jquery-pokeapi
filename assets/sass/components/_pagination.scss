@@ -1,0 +1,17 @@
+.pagination {
+    .page-link {
+        color: $eerie-black;
+    }
+    .page-item:first-child .page-link {
+        border-top-left-radius: 20px;
+        border-bottom-left-radius: 20px;
+    }
+    .page-item:last-child .page-link {
+        border-top-right-radius: 20px;
+        border-bottom-right-radius: 20px;
+    }
+    .page-item.active .page-link {
+        background-color: $nickel;
+        border-color: $nickel;
+    }
+}

@@ -3,106 +3,136 @@
 
 <head>
     <meta charset="utf-8">
+    <link rel="shortcut icon" href="https://assets.pokemon.com/static2/_ui/img/favicon.ico">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="author" content="Rodrigo Diaz Troncoso">
-    <meta name="description" content="Desafio Jugando con una Pokedex">
-    <meta name="keywords" content="desafio, latam">
+    <meta name="description" content="Desafio PokeApi">
+    <meta name="keywords" content="desafio, pokemon, api">
 
-    <!-- Bootstrap CSS -->
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/css/bootstrap.min.css" integrity="sha384-B0vP5xmATw1+K9KRQjQERJvTumQW0nPEzvF6L/Z6nronJ3oUOFUFpCjEUQouq2+l" crossorigin="anonymous">
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-Piv4xVNRyMGpqkS2by6br4gNJ7DXjqk09RmUpJ8jgGtD7zP9yug3goQfGII0yAns" crossorigin="anonymous"></script>
-
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;900&family=Roboto:wght@300;400&display=swap" rel="stylesheet">
 
     <!--Fontawesome-->
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.6.3/css/all.css" integrity="sha384-UHRtZLI+pbxtHCWp1t77Bi1L4ZtiqrqD80Kn4Z8NTSRyMA2Fd33n5dQ8lWUE00s/" crossorigin="anonymous">
+    
+    <!--Charts.js-->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.4/Chart.css" integrity="sha512-C7hOmCgGzihKXzyPU/z4nv97W0d9bv4ALuuEbSf6hm93myico9qa0hv4dODThvCsqQUmKmLcJmlpRmCaApr83g==" crossorigin="anonymous" />
 
-    <!-- Mi style 
-    <link rel="stylesheet" href="assets/css/main.css">-->
-    <title>Pokedex</title>
+    <!-- Mi style -->
+    <link rel="stylesheet" href="assets/css/main.css">
+    <title>PokeApi</title>
 </head>
 
 <body>
-    <h1>Jugando con una Pokedex</h1>
-	
-	
-	
-	<div className="col-md-4 col-lg-3">
-      <div className="card mb-4">
-        <div className="p-5">
-ghjghjghjghj
+
+    <nav class="navbar navbar-expand-lg navbar-dark bg-red fixed-top">
+        <div class="container">
+            <a class="navbar-brand" href="#inicio"><img src="assets/images/pokeapi_logo.png" alt="Logo" height="40px"></a>
         </div>
-        <div className="card-body">
-          <h5 className="card-title text-center">
-            # 33
-            <span className="font-weight-normal">
-              jghjghjghjghjghjghj
-            </span>
-          </h5>
-          <div className="text-center">
-            <Link className="btn btn-danger" >
-              Ver Más
-            </Link>
-          </div>
+    </nav>
+
+
+   <header class="py-4 text-center ">
+        <div class="container my-1 py-1">
+            <h4 class="my-4 py-2">Descubre lo último en Pokémones</h4>
         </div>
-      </div>
-    </div>
-	
-	
-	
-	
-		<div class="row">	
-	<div class="card" style="width: 15rem;">
-  <img src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/39.png" class="card-img-top" alt="...">
-  <div class="card-body">
-    <h5 class="card-title">Card title</h5>
-    <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-    <a href="#" class="btn btn-primary">Go somewhere</a>
-  </div>
-</div>
+    </header>
 
+    <main class="pt-5 main-content" style="margin-bottom: 2%;">
+        
+        <article class="article container-fluid">
+            <section id="imagenes">
+                <div class="article__lorem">
+                    <div class="row">
+                        <div class="col-sm-4" >
+                            <div class="card h-100">
+                              <div class="card-body">
+                                <form id="form-api">
+                                    <div class="form-group row">
+                                        <label class="col-sm-3 col-form-label">Pokémon</label>
+                                        <div class="col-sm-9">
+                                            <select class="form-control" id="select-pokeapi"></select>
+                                        </div>
+                                    </div>
+                                    <div class="form-group row">
+                                        <label class="col-sm-3 col-form-label">Orden</label>
+                                        <label class="col-sm-9 col-form-label" id="orden">Sin información</label>
+                                    </div>
+                                  
+                                    <div class="form-group row">
+                                        <label class="col-sm-3 col-form-label">Altura</label>
+                                        <label class="col-sm-9 col-form-label" id="altura">Sin información</label>
+                                    </div>
 
-<div class="card mb-3" style="max-width: 340px;">
-  <div class="row g-0">
-    <div class="col-md-4">
-      <img src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/39.png" style="width: 15rem;" alt="...">
-    </div>
-    <div class="col-md-8">
-      <div class="card-body">
-        <h5 class="card-title">Card title</h5>
-        <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
-        <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>
-      </div>
-    </div>
-  </div>
-</div>
-</div>
+                                    <div class="form-group row">
+                                        <label class="col-sm-3 col-form-label">Peso</label>
+                                        <label class="col-sm-9 col-form-label" id="peso">Sin información</label>
+                                    </div>   
 
+                                    <div class="form-group row">
+                                        <label class="col-sm-3 col-form-label">Tipo</label>
+                                        <label class="col-sm-9 col-form-label">Sin información</label>
+                                    </div>
 
-<div id="wrapper">
-	<div class="content animate-panel">
-		<div class="row">
-			<div class="col-lg-3">
-				<div class="hpanel hviolet contact-panel">
-					<div class="panel-body text-center">
-						<img class="text-center" alt="logo" class="img-circle m-b" src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/39.png">
-						<h3 class="text-center"><a href=""> Bulbasaur </a></h3>
-					</div>
-					<div class="panel-footer contact-footer">
-						<div class="row">
-							<div class="col-md-6 border-right"> <div class="contact-stat"><span>Número: </span> <strong>001</strong></div> </div>
-							<div class="col-md-6 border-right"> <div class="contact-stat"><span>Tipo: </span> <strong>Planta</strong></div> </div>
-						</div>
-					</div>
-				</div>
-			</div>
-		</div>
-	</div>
-</div>
+                                    <div class="form-group row">
+                                        <label class="col-sm-3 col-form-label">Habilidades</label>
+                                        <label class="col-sm-9 col-form-label">Sin información</label>
+                                    </div>
 
-    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
-    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js" integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN" crossorigin="anonymous"></script>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/js/bootstrap.min.js" integrity="sha384-+YQ4JLhjyBLPDQt//I+STsc9iw4uQqACwlvpslubQzn4u2UU2UFM80nGisd026JF" crossorigin="anonymous"></script>
-    <script type="text/javascript" src="assets/js/script.js"></script>
+                                    <div class="form-group row">
+                                        <label class="col-sm-3 col-form-label">Forms</label>
+                                        <label class="col-sm-9 col-form-label">Sin información</label>
+                                    </div>
+
+                                  </form>
+                              </div>
+                            </div>
+                          </div>
+
+                        <div class="col-sm-4">
+                            <div class="card h-100">
+                              <div class="card-body">
+                                <h5 class="card-title text-center">Imagen</h5>
+                                <div class="text-center">
+                                  <img id="img_artwork" src="/assets/images/pokeball.png" class="img-fluid" alt="imagen pokemon">
+                                </div>
+                              </div>
+                            </div>
+                          </div>
+
+                          <div class="col-sm-4">
+                            <div class="card h-100">
+                              <div class="card-body">
+                                <h4 class="card-title text-center">Estadisticas</h5>
+                                <div class="text-center">
+                                    <canvas id="radarChart"></canvas>
+                                </div>
+                              </div>
+                            </div>
+                          </div>
+                    </div>
+                </div>
+            </section>
+
+        </article>
+       
+    </main>
+
+    <footer class="bg-dark py-5 text-center">
+        <a href="https://github.com/PokeAPI/pokeapi" target="_blank"><i class="fab fa-github-square fa-4x"></i></a>
+		<a href="https://twitter.com/PokeAPI" target="_blank"><i class="fab fa-twitter-square fa-4x"></i></a>
+		<a href="https://www.instagram.com/pokemon/" target="_blank"><i class="fab fa-instagram fa-4x"></i></a>
+    </footer>
+
+    <!-- jquery 3.6.0 --> 
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.js" integrity="sha512-n/4gHW3atM3QqRcbCn6ewmpxcLAHGaDjpEBu4xZd47N0W2oQ+6q7oc3PXstrJYXcbNU1OHdQ1T7pAP+gi5Yu8g==" crossorigin="anonymous"></script>
+    
+    <!-- Chart.js-->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.4/Chart.bundle.js" integrity="sha512-zO8oeHCxetPn1Hd9PdDleg5Tw1bAaP0YmNvPY8CwcRyUk7d7/+nyElmFrB6f7vg4f7Fv4sui1mcep8RIEShczg==" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.4/Chart.js" integrity="sha512-hZf9Qhp3rlDJBvAKvmiG+goaaKRZA6LKUO35oK6EsM0/kjPK32Yw7URqrq3Q+Nvbbt8Usss+IekL7CRn83dYmw==" crossorigin="anonymous"></script>
+
+    <!-- script.js -->    
+    <script type="text/javascript" src="/assets/js/script.js"></script>
 </body>
 
 </html>
