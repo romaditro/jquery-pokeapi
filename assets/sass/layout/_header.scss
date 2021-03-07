@@ -1,6 +1,11 @@
 header {
+    background-image: url('../images/header.png');
+    background-repeat: none;
+    background-size: cover;
+
     h1 {
         font-size: $xx-large;
     }
-    background-color: $poke-claro;
+
+    //background-color: $poke-claro;
 }
